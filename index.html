@@ -2,38 +2,49 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>San Valentín para Heidy Yasmin</title>
   <style>
     body {
       background: linear-gradient(to right, #ff9a9e, #fad0c4);
       font-family: 'Arial', sans-serif;
       text-align: center;
-      padding: 50px;
-      overflow-x: hidden;
+      padding: 20px;
+      margin: 0;
     }
     h1 {
       color: #d6336c;
-      font-size: 2.5em;
+      font-size: clamp(1.5em, 5vw, 2.5em);
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: clamp(1em, 4vw, 1.5em);
     }
     .boton {
       background-color: #ff4d6d;
       color: white;
       border: none;
-      padding: 15px 30px;
-      font-size: 1.2em;
+      padding: 12px 24px;
+      font-size: clamp(1em, 4vw, 1.2em);
       border-radius: 10px;
       cursor: pointer;
       margin: 10px;
       transition: transform 0.3s, font-size 0.3s, padding 0.3s;
+      max-width: 90%;
     }
     .boton:hover {
       background-color: #e63950;
     }
     .mensaje {
       margin-top: 30px;
-      font-size: 1.8em;
+      font-size: clamp(1.2em, 4vw, 1.8em);
       color: #6a0572;
       display: none;
+    }
+    #noMensaje {
+      margin-top: 20px;
+      font-size: clamp(1em, 4vw, 1.5em);
+      color: #d6336c;
     }
     .corazon {
       position: fixed;
@@ -45,10 +56,16 @@
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
     }
-    #noMensaje {
-      margin-top: 20px;
-      font-size: 1.5em;
-      color: #d6336c;
+
+    /* Media query para pantallas pequeñas */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .boton {
+        width: 100%;
+        margin: 5px 0;
+      }
     }
   </style>
 </head>
@@ -79,11 +96,10 @@
       
       // Hacer crecer el botón de "Sí quiero"
       let siBtn = document.getElementById("siBtn");
-      let tamañoExtra = contadorNo * 5; // cada vez crece más
+      let tamañoExtra = contadorNo * 5;
       siBtn.style.fontSize = (1.2 + contadorNo * 0.2) + "em";
       siBtn.style.padding = (15 + tamañoExtra) + "px " + (30 + tamañoExtra) + "px";
       
-      // Cuando ya es muy grande, tapa el "No quiero"
       if (contadorNo >= 5) {
         document.getElementById("noBtn").style.display = "none";
       }
