@@ -57,15 +57,28 @@
       100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
     }
 
-    /* Media query para pantallas pequeñas */
+    /* Corazón 3D girando */
+    .corazon3d {
+      font-size: 4em;
+      color: red;
+      display: inline-block;
+      margin-top: 30px;
+      animation: girar 3s infinite linear;
+      transform-style: preserve-3d;
+    }
+    @keyframes girar {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+    .cariño {
+      margin-top: 10px;
+      font-size: clamp(1em, 4vw, 1.5em);
+      color: #6a0572;
+    }
+
     @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      .boton {
-        width: 100%;
-        margin: 5px 0;
-      }
+      body { padding: 10px; }
+      .boton { width: 100%; margin: 5px 0; }
     }
   </style>
 </head>
@@ -82,6 +95,10 @@
     💕 Te amo con todo mi corazón 💕
   </div>
 
+  <!-- Corazón 3D girando con palabras de cariño -->
+  <div class="corazon3d">❤️</div>
+  <div class="cariño">Siempre serás mi razón de sonreír 💕</div>
+
   <script>
     let contadorNo = 0;
 
@@ -94,7 +111,6 @@
       contadorNo++;
       document.getElementById("noMensaje").innerText = "No, no, no... (" + contadorNo + ")";
       
-      // Hacer crecer el botón de "Sí quiero"
       let siBtn = document.getElementById("siBtn");
       let tamañoExtra = contadorNo * 5;
       siBtn.style.fontSize = (1.2 + contadorNo * 0.2) + "em";
